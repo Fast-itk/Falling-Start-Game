@@ -9,21 +9,33 @@ import {config} from '../config/config'
 export default function Home() {
 
   const {countStars, distance} = config
-  const initialScore: IScore = {realScore: 0, maxScore: 0}
 
   const [stars, setStars] = useState<IStar[]>([])
   const [position, setPosition] = useState<number | null>(null)
   const [start, setStart] = useState<boolean>(false)
-  const [score, setScore] = useState<IScore>(initialScore)
+  const [score, setScore] = useState<IScore>({realScore: 0, maxScore: 0})
   const [progress, setProgress] = useState<number>(0)
 
-  const CalcMaxScore = (): void => {
-    let positiveNumbers: number[] = [] 
-    stars.forEach(s => {
-      if (s.value > 0) {
-        positiveNumbers.push(s.value)}
+  const generateStars = (array: number[]): void => {
+    const newStars = []
+
+    array.forEach((item) => {
+      const star: IStar = {
+        value: getRandomInt(-5, 6),
+        x: getRandomInt(20, 660),
+        y: item * distance
       }
-    )
+      newStars.push(star)
+    })
+    
+    setStars(newStars)
+  }
+
+  const CalcMaxScore = (): void => {
+    
+    console.log(stars)
+    let positiveNumbers: number[] = [] 
+    stars.forEach(s => {if (s.value > 0) positiveNumbers.push(s.value)})
     const result = positiveNumbers.reduce((a, b) => a + b)
     setScore({realScore: 0, maxScore: result})
   }
@@ -75,25 +87,12 @@ export default function Home() {
     )
   })
 
-  const generateStars = (array: number[]): void => {
-    const newStars = []
-
-    array.forEach((item) => {
-      const star: IStar = {
-        value: getRandomInt(-5, 6),
-        x: getRandomInt(20, 660),
-        y: item * distance
-      }
-      newStars.push(star)
-    })
-    
-    setStars(newStars)
-  }
+  
 
   useEffect(() => {
-    setPosition(window.innerHeight)
+    setPosition(window.innerHeight) 
     generateStars(generateArray(countStars))
-  }, [start])
+  }, [])
 
   const {realScore, maxScore} = score
 
