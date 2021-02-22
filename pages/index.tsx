@@ -93,7 +93,7 @@ export default function Home() {
   useEffect(() => {
     setPosition(window.innerHeight)
     generateStars(generateArray(countStars))
-  }, [])
+  }, [start])
 
   const {realScore, maxScore} = score
 

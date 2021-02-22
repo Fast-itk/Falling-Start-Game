@@ -1,6 +1,6 @@
 import {IConfig} from '../interfaces/interfaces'
 
 export const config: IConfig = {
-    countStars: 20,
+    countStars: 5,
     distance: 250
 }
