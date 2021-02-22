@@ -32,8 +32,6 @@ export default function Home() {
   }
 
   const CalcMaxScore = (): void => {
-    
-    console.log(stars)
     let positiveNumbers: number[] = [] 
     stars.forEach(s => {if (s.value > 0) positiveNumbers.push(s.value)})
     const result = positiveNumbers.reduce((a, b) => a + b)
