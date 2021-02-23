@@ -13,3 +13,8 @@ export interface IScore {
     realScore: number,
     maxScore: number
 }
+
+export interface IPosition {
+    bottom: number,
+    left: number
+}

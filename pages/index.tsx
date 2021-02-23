@@ -80,20 +80,17 @@ export default function Home() {
     return (
       <Star 
         key={i} 
-        style={{bottom: `${star.y}px`, left: `${star.x}px`}}
+        bottom={star.y}
+        left={star.x}
         onClick={() => deleteStarHandler(star)}
       >{star.value}</Star>
     )
   })
 
-  
-
     useEffect(() => {
       setPosition(window.innerHeight) 
       generateStars(generateArray(countStars))
     }, [])
-
-  
 
   const {realScore, maxScore} = score
 

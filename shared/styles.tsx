@@ -1,5 +1,6 @@
 import {css, Global, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
+import {IPosition} from '../interfaces/interfaces'
 
 
 export const globalStyles = (
@@ -70,7 +71,7 @@ export const Playground = styled.div`
     display: flex;
 `
 
-export const Star = styled.div`
+export const Star = styled.div<IPosition>`
     width: 200px;
     height: 200px;
     display: flex;
@@ -82,6 +83,8 @@ export const Star = styled.div`
     position: absolute;
     color: #000;
     cursor: pointer;
+    bottom: ${(props => props.bottom)}px;
+    left: ${(props => props.left)}px;
 `
 
 export const Score = styled.h2`
