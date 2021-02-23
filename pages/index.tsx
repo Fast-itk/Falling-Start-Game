@@ -54,6 +54,7 @@ export default function Home() {
       setPosition((prev: number): number => {  
         if (prev === (calcHeight(countStars, distance))) {
           setPosition(window.innerHeight)
+          generateStars(generateArray(countStars))
           setStart(false)
           clearInterval(timer)
         }
@@ -87,10 +88,12 @@ export default function Home() {
 
   
 
-  useEffect(() => {
-    setPosition(window.innerHeight) 
-    generateStars(generateArray(countStars))
-  }, [])
+    useEffect(() => {
+      setPosition(window.innerHeight) 
+      generateStars(generateArray(countStars))
+    }, [])
+
+  
 
   const {realScore, maxScore} = score
 
